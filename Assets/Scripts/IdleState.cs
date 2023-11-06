@@ -12,7 +12,7 @@ public class IdleState : BaseState
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            //state.SwitchState(state.attackState);
+            state.SwitchState(state.states[1]);
         }
     }
 }

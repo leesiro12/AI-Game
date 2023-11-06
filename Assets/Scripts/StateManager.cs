@@ -13,7 +13,7 @@ public class StateManager : MonoBehaviour
     */
     public List<BaseState> states = new List<BaseState>();
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         Debug.Log(states.Count);
         currentState = states[0];

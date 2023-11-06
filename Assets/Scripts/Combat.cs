@@ -15,14 +15,9 @@ public class Combat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            StartCoroutine(Hit());
-        }
-        
-    }
 
-    IEnumerator Hit()
+    }
+    public IEnumerator HitSth()
     {
         ren.material = mat[0];
         yield return new WaitForSeconds(0.3f);
