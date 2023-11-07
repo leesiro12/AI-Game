@@ -2,25 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Combat : MonoBehaviour
+public class UnitBehaviour : MonoBehaviour
 {
     public Renderer ren;
     public Material[] mat;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int hitPoint = 5;
+    public int dmgValue = 5;
+    public int spdValue = 5;
 
-    // Update is called once per frame
-    void Update()
+    public void AttackSth()
     {
-
+        hitPoint -= dmgValue;
     }
     public IEnumerator HitSth()
     {
+        AttackSth();
         ren.material = mat[0];
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(.7f);
         ren.material = mat[1];
     }
 }

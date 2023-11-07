@@ -6,13 +6,11 @@ public class IdleState : BaseState
 {
     public override void EnterState(StateManager state)
     {
-        Debug.Log("Wah");
+        Debug.Log("State: " + state.currentState);
+        Debug.Log(state.unitBehavScript.hitPoint);
     }
     public override void UpdateState(StateManager state)
     {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            state.SwitchState(state.states[1]);
-        }
+        state.SwitchState(state.states[1]);
     }
 }

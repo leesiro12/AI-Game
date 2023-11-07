@@ -6,16 +6,13 @@ using UnityEngine;
 public class StateManager : MonoBehaviour
 {
     public BaseState currentState;
-    /*
-    public IdleState idleState = new IdleState();
-    public AttackState attackState = new AttackState();
-    public HitState hitState = new HitState();
-    */
+    public UnitBehaviour unitBehavScript;
     public List<BaseState> states = new List<BaseState>();
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(states.Count);
+        unitBehavScript = this.GetComponent<UnitBehaviour>();
+        //Debug.Log(states.Count);
         currentState = states[0];
         //currentState = idleState;   //set starting state for the state machine
         currentState.EnterState(this);  //'this' object holding this script will immediately call EnterState();
@@ -24,6 +21,10 @@ public class StateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (unitBehavScript.hitPoint < 0)
+        {
+            unitBehavScript.hitPoint = 0;
+        }
         currentState.UpdateState(this); //'this' object holding this script will call UpdateState() every frame;
     }
 
