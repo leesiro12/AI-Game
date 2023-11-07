@@ -11,10 +11,7 @@ public class AttackState : BaseState
     }
     public override void UpdateState(StateManager state)
     {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            state.unitBehavScript.StartCoroutine(state.unitBehavScript.HitSth());
-            state.SwitchState(state.states[2]);
-        }
+        state.unitBehavScript.StartCoroutine(state.unitBehavScript.HitSth());
+        state.SwitchState(state.states[2]);
     }
 }

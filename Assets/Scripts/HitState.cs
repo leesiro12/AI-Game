@@ -11,6 +11,9 @@ public class HitState : BaseState
     }
     public override void UpdateState(StateManager state)
     {
-        state.SwitchState(state.states[0]);
+        if (!state.unitBehavScript.attacking)
+        {
+            state.SwitchState(state.states[0]);
+        }
     }
 }

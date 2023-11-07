@@ -9,16 +9,19 @@ public class UnitBehaviour : MonoBehaviour
     public int hitPoint = 5;
     public int dmgValue = 5;
     public int spdValue = 5;
+    public bool attacking = false;
 
     public void AttackSth()
     {
+        attacking = true;
         hitPoint -= dmgValue;
     }
     public IEnumerator HitSth()
     {
         AttackSth();
         ren.material = mat[0];
-        yield return new WaitForSeconds(.7f);
+        yield return new WaitForSeconds(1f);
         ren.material = mat[1];
+        attacking = false;
     }
 }
