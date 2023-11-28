@@ -1,41 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //code refactored from iHeartGameDev
 public class StateManager : MonoBehaviour
 {
     public BaseState currentState;
     public UnitBehaviour unitBehavScript;
+    public UnitManager unitManagerScript;
     public List<BaseState> states = new List<BaseState>();
-    bool isPlaying;
+
     // Start is called before the first frame update
     void Start()
     {
-        isPlaying = true;
-        unitBehavScript = this.GetComponent<UnitBehaviour>();
-        Debug.Log(states.Count);
+        unitBehavScript = GetComponent<UnitBehaviour>();
+        //Debug.Log(states.Count);
         currentState = states[0];
         //currentState = idleState;   //set starting state for the state machine
         currentState.EnterState(this);  //'this' object holding this script will immediately call EnterState();
+    }
+    private void Update()
+    {
+        if (unitBehavScript.hitPoint <= 0)
+        {
+            unitBehavScript.hitPoint = 0;
+            unitManagerScript.isPlaying = false;
+            
+        }
     }
 
     // Update is called once per frame
     public void Activate()
     {
-        if (unitBehavScript.hitPoint <= 0)
-        {
-            unitBehavScript.hitPoint = 0;
-            isPlaying = false;
-        }
-        if (isPlaying)
+        if (unitManagerScript.isPlaying)
         {
             currentState.UpdateState(this); //'this' object holding this script will call UpdateState() every frame;
-            
         }
-        if (!isPlaying)
+        else if (!unitManagerScript.isPlaying)
         {
             Debug.Log("GAME OVER!");
+            Debug.Log(unitBehavScript.name + " Died!");
         }
     }
 
