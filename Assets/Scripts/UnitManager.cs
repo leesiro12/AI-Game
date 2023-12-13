@@ -6,7 +6,12 @@ public class UnitManager : MonoBehaviour
 {
     public List<UnitBehaviour> currentUnits;
     public bool isPlaying = true;
+    public static UnitManager instance;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         isPlaying = true;
@@ -16,6 +21,15 @@ public class UnitManager : MonoBehaviour
     {
         while (isPlaying)
         {
+            List<UnitBehaviour> healthChecks = new List<UnitBehaviour>(currentUnits);
+            foreach (UnitBehaviour cu in healthChecks)
+            {
+                if (cu.hitPoint <= 0)
+                {
+                    currentUnits.Remove(cu);
+                }
+            }
+
             currentUnits.Sort(new Comparer());
             currentUnits.Reverse();
             foreach (UnitBehaviour cu in currentUnits)

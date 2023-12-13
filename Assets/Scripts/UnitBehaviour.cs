@@ -11,7 +11,10 @@ public class UnitBehaviour : MonoBehaviour
     public bool attacking = false;
     public Slider slider;
     public int team;
-    UnitBehaviour actualtarget;
+    public int rankPos;
+    public UnitBehaviour actualtarget;
+    public Renderer ren;
+    public Material[] mat;
 
     private void Start()
     {
@@ -29,16 +32,17 @@ public class UnitBehaviour : MonoBehaviour
                 actualtarget = target;
             }
         }
-
         actualtarget.attacking = true;
         actualtarget.hitPoint -= dmgValue;
-        slider.value = hitPoint;
+        actualtarget.slider.value -= dmgValue;
     }
     public IEnumerator HitSth(StateManager state)
     {
-        AttackSth(state);
-        Debug.Log(name + " attacks "+ actualtarget.name +  " Dmg: " + dmgValue);
-        yield return new WaitForSeconds(1f);
-        attacking = false;
+            AttackSth(state);
+            actualtarget.ren.material = mat[0];
+            Debug.Log(name + " attacks " + actualtarget.name + " Dmg: " + dmgValue);
+            yield return new WaitForSeconds(1f);
+            actualtarget.ren.material = mat[1];
+            attacking = false;
     }
 }

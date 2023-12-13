@@ -14,20 +14,11 @@ public class StateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        unitBehavScript = GetComponent<UnitBehaviour>();
+        //unitBehavScript = GetComponent<UnitBehaviour>();
         //Debug.Log(states.Count);
         currentState = states[0];
         //currentState = idleState;   //set starting state for the state machine
         currentState.EnterState(this);  //'this' object holding this script will immediately call EnterState();
-    }
-    private void Update()
-    {
-        if (unitBehavScript.hitPoint <= 0)
-        {
-            unitBehavScript.hitPoint = 0;
-            unitManagerScript.isPlaying = false;
-            
-        }
     }
 
     // Update is called once per frame

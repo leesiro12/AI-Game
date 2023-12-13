@@ -10,8 +10,17 @@ public class AttackState : BaseState
     }
     public override void UpdateState(StateManager state)
     {
-        //if (state.unitBehavScript.team != state.unitBehavScript.team)
-        state.unitBehavScript.StartCoroutine(state.unitBehavScript.HitSth(state));
+
+        if (state.unitBehavScript is FighterBehaviour)
+        {
+            FighterBehaviour behavscript = (FighterBehaviour)state.unitBehavScript;
+            behavscript.StartCoroutine(behavscript.HitSth(state));
+        }
+        else
+        {
+            //if (state.unitBehavScript.team != state.unitBehavScript.team)
+            state.unitBehavScript.StartCoroutine(state.unitBehavScript.HitSth(state));
+        }
         state.SwitchState(state.states[2]);
     }
 }
