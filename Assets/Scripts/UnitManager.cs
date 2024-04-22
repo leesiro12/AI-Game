@@ -26,7 +26,7 @@ public class UnitManager : MonoBehaviour
             {
                 if (cu.hitPoint <= 0)
                 {
-                    currentUnits.Remove(cu);
+                    currentUnits.Remove(cu); 
                 }
             }
 
@@ -34,7 +34,7 @@ public class UnitManager : MonoBehaviour
             currentUnits.Reverse();
             foreach (UnitBehaviour cu in currentUnits)
             {
-                cu.GetComponent<StateManager>().Activate();
+                cu.GetComponent<Manager>().Activate();
                 yield return new WaitForSeconds(1f);
             }
             yield return new WaitForSeconds(0.2f);

@@ -10,6 +10,7 @@ public class Unit : MonoBehaviour
         stateManager.states.Add(new IdleState());
         stateManager.states.Add(new AttackState());
         stateManager.states.Add(new HitState());
+        stateManager.states.Add(new DefState());
     }
 
     // Update is called once per frame

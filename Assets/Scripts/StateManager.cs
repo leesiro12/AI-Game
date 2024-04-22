@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //code refactored from iHeartGameDev
-public class StateManager : MonoBehaviour
+public class StateManager : Manager
 {
     public BaseState currentState;
-    public UnitBehaviour unitBehavScript;
+    
     public UnitManager unitManagerScript;
     public List<BaseState> states = new List<BaseState>();
 
@@ -17,12 +17,11 @@ public class StateManager : MonoBehaviour
         //unitBehavScript = GetComponent<UnitBehaviour>();
         //Debug.Log(states.Count);
         currentState = states[0];
-        //currentState = idleState;   //set starting state for the state machine
         currentState.EnterState(this);  //'this' object holding this script will immediately call EnterState();
     }
 
     // Update is called once per frame
-    public void Activate()
+    public override void Activate()
     {
         if (unitManagerScript.isPlaying)
         {

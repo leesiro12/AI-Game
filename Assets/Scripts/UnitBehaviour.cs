@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class UnitBehaviour : MonoBehaviour
 {
+    public int maxHP;
     public int hitPoint;
-    public int dmgValue = 5;
-    public int spdValue = 5;
+    public int dmgValue = 50;
+    public int spdValue = 50;
     public bool attacking = false;
     public Slider slider;
     public int team;
@@ -16,14 +17,19 @@ public class UnitBehaviour : MonoBehaviour
     public Renderer ren;
     public Material[] mat;
 
+    private void Awake()
+    {
+        maxHP = hitPoint;
+    }
     private void Start()
     {
+        
         slider.maxValue = hitPoint;
         slider.value = slider.maxValue;
     }
-    public void AttackSth(StateManager state)
+    public void AttackSth()
     {
-        List<UnitBehaviour> potentialTargets = state.unitManagerScript.currentUnits;
+        List<UnitBehaviour> potentialTargets = UnitManager.instance.currentUnits;
         actualtarget = this;
         foreach (UnitBehaviour target in potentialTargets)
         {
@@ -36,9 +42,13 @@ public class UnitBehaviour : MonoBehaviour
         actualtarget.hitPoint -= dmgValue;
         actualtarget.slider.value -= dmgValue;
     }
-    public IEnumerator HitSth(StateManager state)
+    public void Defend()
     {
-            AttackSth(state);
+
+    }
+    public IEnumerator HitSth()
+    {
+            AttackSth();
             actualtarget.ren.material = mat[0];
             Debug.Log(name + " attacks " + actualtarget.name + " Dmg: " + dmgValue);
             yield return new WaitForSeconds(1f);
