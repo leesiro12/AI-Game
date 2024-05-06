@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UnitBehaviour : MonoBehaviour
 {
+    public float priorityValue;
     public int maxHP;
     public int hitPoint;
     public int dmgValue = 50;

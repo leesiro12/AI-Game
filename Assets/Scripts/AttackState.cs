@@ -6,7 +6,7 @@ public class AttackState : IdleState
 {
     public override void EnterState(StateManager state)
     {
-        //Debug.Log("State: " + state.currentState);
+        Debug.Log("State: " + state.currentState);
     }
     public override void UpdateState(StateManager state)
     {
@@ -14,6 +14,11 @@ public class AttackState : IdleState
         if (state.unitBehavScript is FighterBehaviour)
         {
             FighterBehaviour behavscript = (FighterBehaviour)state.unitBehavScript;
+            behavscript.StartCoroutine(behavscript.HitSth());
+        }
+        if (state.unitBehavScript is ArcherBehaviour)
+        {
+            ArcherBehaviour behavscript = (ArcherBehaviour)state.unitBehavScript;
             behavscript.StartCoroutine(behavscript.HitSth());
         }
         else

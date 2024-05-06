@@ -27,13 +27,15 @@ public class StateManager : Manager
         {
             currentState.UpdateState(this); //'this' object holding this script will call UpdateState() every frame;
         }
-        else if (!unitManagerScript.isPlaying)
+        
+    }
+    private void Update()
+    {
+        if (!UnitManager.instance.isPlaying)
         {
             Debug.Log("GAME OVER!");
-            Debug.Log(unitBehavScript.name + " Died!");
         }
     }
-
     public void SwitchState(BaseState state)
     {
         currentState = state;
