@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class UnitBehaviour : MonoBehaviour
 {
-    public float priorityValue;
-    public int maxHP;
-    public int hitPoint;
+    public float aggressionValue;
+    public float maxHP;
+    public float hitPoint;
     public int dmgValue = 50;
     public int spdValue = 50;
     public bool attacking = false;
@@ -17,6 +17,17 @@ public class UnitBehaviour : MonoBehaviour
     public UnitBehaviour actualtarget;
     public Renderer ren;
     public Material[] mat;
+    public float priorityValue = 0;
+
+
+    public CharacterClass thisCharacterClass;
+    public CharacterClass otherCharacterClass;
+    public enum CharacterClass
+    {
+        Tank,
+        DPS,
+        Support
+    }
 
     private void Awake()
     {

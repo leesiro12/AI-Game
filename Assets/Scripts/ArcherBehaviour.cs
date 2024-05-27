@@ -7,37 +7,74 @@ public class ArcherBehaviour : UnitBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        priorityValue = 0.7f;
+        thisCharacterClass = CharacterClass.DPS;
+        aggressionValue = 0.7f;
         slider.maxValue = hitPoint;
         slider.value = slider.maxValue;
     }
-
     public new void AttackSth()
     {
         List<UnitBehaviour> potentialTargets = UnitManager.instance.currentUnits;
         actualtarget = this;
         foreach (UnitBehaviour target in potentialTargets)
         {
+            if (target.thisCharacterClass == CharacterClass.DPS)
+            {
+                priorityValue = 0f;
+            }
+            else if (target.thisCharacterClass == CharacterClass.Support)
+            {
+                priorityValue += 1f;
+            }
+            else if (target.thisCharacterClass == CharacterClass.Tank)
+            {
+                priorityValue -= 1f;
+            }
             if (target.team != team && target.rankPos != 0)
             {
-                actualtarget = target;
+                if (priorityValue > 0)
+                {
+                    actualtarget = target;
+                    otherCharacterClass = target.thisCharacterClass;
+                    Debug.Log(actualtarget.thisCharacterClass);
+                }
+                else
+                {
+                    actualtarget = target;
+                    otherCharacterClass = target.thisCharacterClass;
+                    Debug.Log(actualtarget.thisCharacterClass);
+                }
+
             }
-            
+            if (actualtarget == this)
+            {
+                UnitManager.instance.isPlaying = false;
+                return;
+            }
+            else
+            {
+                switch (otherCharacterClass)
+                {
+                    case CharacterClass.Tank:
+                        actualtarget.attacking = true;
+                        actualtarget.hitPoint -= dmgValue;
+                        actualtarget.slider.value -= dmgValue;
+                        break;
+                    case CharacterClass.DPS:
+                        actualtarget.attacking = true;
+                        actualtarget.hitPoint -= dmgValue * 2;
+                        actualtarget.slider.value -= dmgValue;
+                        break;
+                    case CharacterClass.Support:
+                        actualtarget.attacking = true;
+                        actualtarget.hitPoint -= dmgValue / 2;
+                        actualtarget.slider.value -= dmgValue;
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
-        if (actualtarget == this)
-        {
-            UnitManager.instance.isPlaying = false;
-            return;
-        }
-        else
-        {
-            actualtarget.attacking = true;
-            actualtarget.hitPoint -= dmgValue;
-            actualtarget.slider.value -= dmgValue;
-        }
-        actualtarget.attacking = true;
-        actualtarget.hitPoint -= dmgValue;
-        actualtarget.slider.value -= dmgValue;
     }
 
     public new IEnumerator HitSth()

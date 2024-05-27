@@ -7,21 +7,43 @@ public class FighterBehaviour : UnitBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        priorityValue = 0.4f;
+        thisCharacterClass = CharacterClass.Tank;
+        aggressionValue = 0.6f;
         slider.maxValue = hitPoint;
         slider.value = slider.maxValue;
     }
     public new void AttackSth()
     {
-        float randValue = Random.value;
         List<UnitBehaviour> potentialTargets = UnitManager.instance.currentUnits;
         actualtarget = this;
         foreach (UnitBehaviour target in potentialTargets)
         {
-            if (target.team != team && target.rankPos == 0)
+            if (target.thisCharacterClass==CharacterClass.DPS)
             {
-                actualtarget = target;
-                
+                priorityValue += 1f;
+            }
+            else if (target.thisCharacterClass == CharacterClass.Support)
+            {
+                priorityValue -= 1f;
+            }
+            else if (target.thisCharacterClass == CharacterClass.Tank)
+            {
+                priorityValue = 0f;
+            }
+            if (target.team != team && target.rankPos == 0 || target.rankPos == 1)
+            {
+                if (priorityValue > 0)
+                {
+                    actualtarget = target;
+                    otherCharacterClass = target.thisCharacterClass;
+                    Debug.Log(actualtarget.thisCharacterClass);
+                }
+                else
+                {
+                    actualtarget = target;
+                    otherCharacterClass = target.thisCharacterClass;
+                    Debug.Log(actualtarget.thisCharacterClass);
+                }
             }
         }
         if (actualtarget == this)
@@ -31,9 +53,26 @@ public class FighterBehaviour : UnitBehaviour
         }
         else
         {
-        actualtarget.attacking = true;
-        actualtarget.hitPoint -= dmgValue;
-        actualtarget.slider.value -= dmgValue;
+            switch (otherCharacterClass)
+            {
+                case CharacterClass.Tank:
+                    actualtarget.attacking = true;
+                    actualtarget.hitPoint -= dmgValue;
+                    actualtarget.slider.value -= dmgValue;
+                    break;
+                case CharacterClass.DPS:
+                    actualtarget.attacking = true;
+                    actualtarget.hitPoint -= dmgValue*2;
+                    actualtarget.slider.value -= dmgValue;
+                    break;
+                case CharacterClass.Support:
+                    actualtarget.attacking = true;
+                    actualtarget.hitPoint -= dmgValue/2;
+                    actualtarget.slider.value -= dmgValue;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

@@ -10,7 +10,6 @@ public class AttackState : IdleState
     }
     public override void UpdateState(StateManager state)
     {
-
         if (state.unitBehavScript is FighterBehaviour)
         {
             FighterBehaviour behavscript = (FighterBehaviour)state.unitBehavScript;

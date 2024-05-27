@@ -223,7 +223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1a49ab5389656f543be6b5ed2a862a4b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -702,9 +702,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230c6d724fd2501478dd42feaea2a512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priorityValue: 0
+  aggressionValue: 0
   maxHP: 0
-  hitPoint: 13
+  hitPoint: 17
   dmgValue: 7
   spdValue: 5
   attacking: 0
@@ -716,6 +716,9 @@ MonoBehaviour:
   mat:
   - {fileID: 2100000, guid: 976095b66344acb48838dd7697f3ea7c, type: 2}
   - {fileID: 2100000, guid: 069a8b2dfc464794989300685919a694, type: 2}
+  priorityValue: 0
+  thisCharacterClass: 0
+  otherCharacterClass: 0
 --- !u!1 &554498502
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,11 +929,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230c6d724fd2501478dd42feaea2a512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priorityValue: 0
+  aggressionValue: 0
   maxHP: 0
   hitPoint: 15
-  dmgValue: 9
-  spdValue: 10
+  dmgValue: 8
+  spdValue: 7
   attacking: 0
   slider: {fileID: 375081341}
   team: 1
@@ -940,6 +943,9 @@ MonoBehaviour:
   mat:
   - {fileID: 2100000, guid: 976095b66344acb48838dd7697f3ea7c, type: 2}
   - {fileID: -9134265094312954877, guid: ef60b92485180ef4ca21b047c06310d6, type: 3}
+  priorityValue: 0
+  thisCharacterClass: 0
+  otherCharacterClass: 0
 --- !u!1 &856890308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,7 +1943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230c6d724fd2501478dd42feaea2a512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priorityValue: 0
+  aggressionValue: 0
   maxHP: 0
   hitPoint: 13
   dmgValue: 7
@@ -1951,6 +1957,9 @@ MonoBehaviour:
   mat:
   - {fileID: 2100000, guid: 976095b66344acb48838dd7697f3ea7c, type: 2}
   - {fileID: 2100000, guid: 069a8b2dfc464794989300685919a694, type: 2}
+  priorityValue: 0
+  thisCharacterClass: 0
+  otherCharacterClass: 0
 --- !u!114 &1413975086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2027,7 +2036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ebb3f601ef84f4cbb9326a34533468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priorityValue: 0
+  aggressionValue: 0
   maxHP: 0
   hitPoint: 10
   dmgValue: 6
@@ -2039,6 +2048,9 @@ MonoBehaviour:
   actualtarget: {fileID: 0}
   ren: {fileID: 0}
   mat: []
+  priorityValue: 0
+  thisCharacterClass: 0
+  otherCharacterClass: 0
 --- !u!1 &1531717957
 GameObject:
   m_ObjectHideFlags: 0
@@ -2756,6 +2768,8 @@ MonoBehaviour:
   currentUnits:
   - {fileID: 535822269}
   - {fileID: 835806176}
+  - {fileID: 1496939004}
+  - {fileID: 2065801571}
   isPlaying: 0
 --- !u!4 &1938830917
 Transform:
@@ -3003,7 +3017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1a49ab5389656f543be6b5ed2a862a4b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -3057,7 +3071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ebb3f601ef84f4cbb9326a34533468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priorityValue: 0
+  aggressionValue: 0
   maxHP: 0
   hitPoint: 10
   dmgValue: 6
@@ -3069,3 +3083,6 @@ MonoBehaviour:
   actualtarget: {fileID: 0}
   ren: {fileID: 0}
   mat: []
+  priorityValue: 0
+  thisCharacterClass: 0
+  otherCharacterClass: 0
