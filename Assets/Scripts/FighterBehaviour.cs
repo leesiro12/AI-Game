@@ -18,31 +18,32 @@ public class FighterBehaviour : UnitBehaviour
         actualtarget = this;
         foreach (UnitBehaviour target in potentialTargets)
         {
-            if (target.thisCharacterClass==CharacterClass.DPS)
+            if (target.team != team )
             {
-                priorityValue += 1f;
-            }
-            else if (target.thisCharacterClass == CharacterClass.Support)
-            {
-                priorityValue -= 1f;
-            }
-            else if (target.thisCharacterClass == CharacterClass.Tank)
-            {
-                priorityValue = 0f;
-            }
-            if (target.team != team && target.rankPos == 0 || target.rankPos == 1)
-            {
+                if (target.thisCharacterClass == CharacterClass.DPS)
+                {
+                    priorityValue = 1f;
+                }
+                else if (target.thisCharacterClass == CharacterClass.Support)
+                {
+                    priorityValue = -1f;
+                }
+                else if (target.thisCharacterClass == CharacterClass.Tank)
+                {
+                    priorityValue = 0f;
+                }
                 if (priorityValue > 0)
                 {
                     actualtarget = target;
                     otherCharacterClass = target.thisCharacterClass;
-                    Debug.Log(actualtarget.thisCharacterClass);
+                    //Debug.Log(actualtarget.thisCharacterClass);
+                    break;
                 }
                 else
                 {
                     actualtarget = target;
                     otherCharacterClass = target.thisCharacterClass;
-                    Debug.Log(actualtarget.thisCharacterClass);
+                    //Debug.Log(actualtarget.thisCharacterClass);
                 }
             }
         }
@@ -78,12 +79,19 @@ public class FighterBehaviour : UnitBehaviour
 
     public new IEnumerator HitSth()
     {
-        AttackSth();
-        actualtarget.ren.material = mat[0];
-        Debug.Log(name + " attacks " + actualtarget.name + " Dmg: " + dmgValue);
-        yield return new WaitForSeconds(1f);
-        actualtarget.ren.material = mat[1];
-        attacking = false;
+        if (actualtarget != this)
+        {
+            AttackSth();
+            actualtarget.ren.material = mat[0];
+            Debug.Log(name + " attacks " + actualtarget.name + " Dmg: " + dmgValue);
+            yield return new WaitForSeconds(1f);
+            actualtarget.ren.material = mat[1];
+            attacking = false;
+        }
+        else
+        {
+            yield break;
+        }
     }
 
 }

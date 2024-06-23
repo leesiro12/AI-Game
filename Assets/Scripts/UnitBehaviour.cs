@@ -56,7 +56,15 @@ public class UnitBehaviour : MonoBehaviour
     }
     public void Defend()
     {
-
+        List<UnitBehaviour> potentialTargets = UnitManager.instance.currentUnits;
+        actualtarget = this;
+        foreach (UnitBehaviour target in potentialTargets)
+        {
+            if (target.team != team)
+            {
+                actualtarget = target;
+            }
+        }
     }
     public IEnumerator HitSth()
     {

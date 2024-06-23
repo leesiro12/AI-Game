@@ -35,7 +35,7 @@ public class UnitManager : MonoBehaviour
             foreach (UnitBehaviour cu in currentUnits)
             {
                 cu.GetComponent<Manager>().Activate();
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.2f);
             }
             yield return new WaitForSeconds(0.2f);
         }

@@ -6,7 +6,7 @@ public class HitState : AttackState
 {
     public override void EnterState(StateManager state)
     {
-        Debug.Log("State: " + state.currentState);
+        //Debug.Log("State: " + state.currentState);
     }
     public override void UpdateState(StateManager state)
     {

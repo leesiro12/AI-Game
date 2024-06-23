@@ -14,7 +14,7 @@ public class StateManager : Manager
     // Start is called before the first frame update
     void Start()
     {
-        //unitBehavScript = GetComponent<UnitBehaviour>();
+        unitBehavScript = GetComponent<UnitBehaviour>();
         //Debug.Log(states.Count);
         currentState = states[0];
         currentState.EnterState(this);  //'this' object holding this script will immediately call EnterState();
@@ -31,10 +31,7 @@ public class StateManager : Manager
     }
     private void Update()
     {
-        if (!UnitManager.instance.isPlaying)
-        {
-            Debug.Log("GAME OVER!");
-        }
+        
     }
     public void SwitchState(BaseState state)
     {

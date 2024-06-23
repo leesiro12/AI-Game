@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8961630168625734966}
   - component: {fileID: 8961630168625734967}
   - component: {fileID: 8961630168625734964}
-  - component: {fileID: 8961630168625734965}
   - component: {fileID: 8961630168625734962}
   - component: {fileID: 8961630168625734963}
+  - component: {fileID: 4317424140270286054}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -100,27 +100,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8961630168625734965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8961630168625734960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5faf0a4e88425bd4583aefae36ccf955, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ren: {fileID: 8961630168625734967}
-  mat:
-  - {fileID: 2100000, guid: 976095b66344acb48838dd7697f3ea7c, type: 2}
-  - {fileID: 2100000, guid: 993885bced368c6469f830127abab112, type: 2}
-  hitPoint: 5
-  dmgValue: 2
-  spdValue: 1
-  attacking: 0
-  slider: {fileID: 0}
 --- !u!114 &8961630168625734962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa8155925b060c4aaf32f02bcedbf97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitBehavScript: {fileID: 8961630168625734965}
+  unitBehavScript: {fileID: 0}
   unitManagerScript: {fileID: 0}
 --- !u!114 &8961630168625734963
 MonoBehaviour:
@@ -148,3 +127,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateManager: {fileID: 8961630168625734962}
+--- !u!114 &4317424140270286054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8961630168625734960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16567a84ebaf9fa488b6a5936b8e1a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aggressionValue: 0
+  maxHP: 0
+  hitPoint: 10
+  dmgValue: 13
+  spdValue: 6
+  attacking: 0
+  slider: {fileID: 0}
+  team: 1
+  rankPos: 2
+  actualtarget: {fileID: 0}
+  ren: {fileID: 8961630168625734967}
+  mat:
+  - {fileID: 2100000, guid: 976095b66344acb48838dd7697f3ea7c, type: 2}
+  - {fileID: 2100000, guid: 993885bced368c6469f830127abab112, type: 2}
+  priorityValue: 0
+  thisCharacterClass: 0
+  otherCharacterClass: 0
+  isHealing: 0
+  healValue: 5
